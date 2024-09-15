@@ -1,0 +1,9 @@
+{
+  "matchDate": "2024-09-12",
+  "team1": "Team A",
+  "team2": "Team B",
+  "score": {
+    "team1Score": 200,
+    "team2Score": 180
+  }
+}

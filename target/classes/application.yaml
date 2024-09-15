@@ -1,0 +1,59 @@
+spring:
+  application:
+    name: ipl-assignment
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/ipl      # Replace 'ipl' with your actual database name if necessary
+    username: root                            # Your MySQL username
+    password: root                            # Your MySQL password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update                        # Automatically update the schema; use 'create' for development only
+    show-sql: true                            # Show SQL queries in the console/log
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect  # Use this for MySQL 8.x or above
+
+  jackson:
+    serialization:
+      indent_output: true                     # Pretty print JSON output for easier reading in logs
+
+  servlet:
+    multipart:
+      enabled: true                           # Enable multipart (file upload) functionality
+      max-file-size: 100MB                     # Set maximum file size for upload to 10MB
+      max-request-size: 100MB                  # Set maximum request size to 10MB
+  data:
+    redis:
+      port: 6379
+  cache:
+    redis:
+      time-to-live: 600000
+      key-prefix: "ipl:"
+      use-key-prefix: true
+      enable-statistics: true
+  kafka:
+    bootstrap-servers: localhost:9092
+    properties:
+      security-protocol: PLAINTEXT
+      SASL_MECHANISM: PLAIN
+    producer:
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
+
+
+
+
+server:
+  port: 5000                                  # Custom port to run the application on
+
+
+
